@@ -18,6 +18,7 @@ Questo script Python è progettato per elaborare un file Excel contenente dati r
 Questo script richiede le seguenti librerie Python:
 - `pandas`
 - `openpyxl`
+- `numpy`
 - `tqdm`
 - `tkinter` (incluso nella libreria standard di Python)
 
