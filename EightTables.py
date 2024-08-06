@@ -34,7 +34,7 @@ os.makedirs(output_dir, exist_ok=True)
 # Mappa dei nuovi nomi delle colonne
 new_column_names = [
     '1. best RSRP', 'Time', 'Ch', 'DL BW', 'PCI', '1. best Rx Level', 'ARFCN', 'BSIC', 
-    '1. best RSCP', 'SC', 'Description', 'Notification name', '1. best RSRQ', '1. best Ec/N0', 90
+    '1. best RSCP', 'SC', 'Description', 'Notification name', '1. best RSRQ', '1. best Ec/N0', '1. best CINR'
 ]
 
 # Funzione per mappare il canale all'operatore e banda
@@ -110,7 +110,7 @@ with tqdm(total=total_rows, desc="Elaborazione complessiva") as pbar:
                     if 'L' in operator_band:
                         rsrp_rscp_mean = filtered_df['1. best RSRP'].dropna().mean() if not filtered_df['1. best RSRP'].dropna().empty else ''
                         rsrq_ecno_mean = filtered_df['1. best RSRQ'].dropna().mean() if not filtered_df['1. best RSRQ'].dropna().empty else ''
-                        sinr_mean = filtered_df[90].dropna().mean() if 90 in filtered_df.columns and not filtered_df[90].dropna().empty else ''
+                        sinr_mean = filtered_df['1. best CINR'].dropna().mean() if '1. best CINR' in filtered_df.columns and not filtered_df['1. best CINR'].dropna().empty else ''
                     elif 'U' in operator_band:
                         rsrp_rscp_mean = filtered_df['1. best RSCP'].dropna().mean() if not filtered_df['1. best RSCP'].dropna().empty else ''
                         rsrq_ecno_mean = filtered_df['1. best Ec/N0'].dropna().mean() if not filtered_df['1. best Ec/N0'].dropna().empty else ''
