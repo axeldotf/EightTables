@@ -1,15 +1,5 @@
 # EightTables Data Processing Script
 
-## Gerarchia
-
-EightTables/  
-│  
-├── tab_originale.xlsx\t     # File excel contenente i dati da elaborare  
-├── script.py              # Script principale per l'elaborazione dei dati  
-├── README.md              # Questo file  
-├── LICENSE                # Licenza  
-└── EightTables_output/    # Directory in cui verranno salvati i risultati elaborati  
-
 ## Descrizione
 
 Questo script Python è stato creato per elaborare dati da file Excel contenenti informazioni sui segnali di telecomunicazione. Lo script elabora i dati presenti in diversi fogli del file Excel, generando tabelle di output per ciascun foglio e salvandole in una directory dedicata.
