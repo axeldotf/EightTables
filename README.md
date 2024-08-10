@@ -4,7 +4,7 @@
 
 EightTables/  
 │  
-├── tab_originale.xlsx     # File excel contenente i dati da elaborare  
+├── tab_originale.xlsx\t     # File excel contenente i dati da elaborare  
 ├── script.py              # Script principale per l'elaborazione dei dati  
 ├── README.md              # Questo file  
 ├── LICENSE                # Licenza  
