@@ -45,7 +45,7 @@ def map_LTE_UMTS(channel):
         1350: 'TIM L1800', 1500: 'Iliad L1800', 1650: 'W3 L1800', 1850: 'VF L1800',
         2900: 'Iliad L2600', 3025: 'VF L2600', 3350: 'W3 L2600', 3175: 'TIM L2600',
         125: 'W3 L2100', 275: 'TIM L2100', 525: 'VF L2100', 400: 'Iliad L2100',
-        2938: 'Iliad U900', 3063: 'W3 U900', 10563: 'W3 U2100'
+        2938: 'Iliad U900', 3063: 'W3 U900', 10563: 'W3 U2100', 100: 'W3 L2100'
     }
     return mapping.get(channel, 'Unknown')
 
@@ -158,7 +158,6 @@ with tqdm(total=total_rows, desc="Elaborazione complessiva") as pbar:
                 # Modifica il valore di RSSI-RXLEV
                 random_float = round(random.uniform(-3, 2), 1)
                 new_rssi_rxlev = data['RSSI-RXLEV'] + random_float
-                print(f"Valore RSSI-RXLEV modificato casualmente per {operator_band}: {data['RSSI-RXLEV']} -> {new_rssi_rxlev}")
                 data['RSSI-RXLEV'] = new_rssi_rxlev
                 data['DIREZIONE'] = int(sheet_name)  # Imposta la DIREZIONE in modo uniforme
                 temp_output_df = pd.concat([temp_output_df, pd.DataFrame([data])], ignore_index=True)
