@@ -1,46 +1,69 @@
-# EightTables Data Processing Script
+# EightTables 2G/3G/4G/5G Data Processing
 
-## Descrizione
+## Introduzione
+Questo progetto è stato sviluppato in collaborazione con **Selektra Italia S.r.l.** e consiste in un sistema automatizzato per la conversione ed elaborazione di dati provenienti da misurazioni GSM (2G), UMTS (3G), LTE (4G) e 5G effettuate sul campo. Lo scopo principale del progetto è generare report strutturati per una rapida analisi tecnica.
 
-Questo script Python è stato creato per elaborare dati da file Excel contenenti informazioni sui segnali di telecomunicazione. Lo script elabora i dati presenti in diversi fogli del file Excel, generando tabelle di output per ciascun foglio e salvandole in una directory dedicata.
+## Struttura del Progetto
 
-Il processo di elaborazione include:
-- Mappatura di canali e ARFCN (Absolute Radio Frequency Channel Number) agli operatori e bande corrispondenti.
-- Calcolo delle medie di vari parametri di segnale come RSRP, RSCP, Rx Level, Ec/N0 e SINR.
-- Selezione dei valori massimi per ciascun operatore e banda.
-- Esportazione dei risultati elaborati in file Excel separati per ciascun foglio elaborato.
-
-## Funzionalità
-
-- **Mappatura automatica**: Lo script associa automaticamente i canali e gli ARFCN ai rispettivi operatori e bande.
-- **Elaborazione avanzata**: Per ogni foglio, vengono calcolate le medie dei principali parametri di segnale, che vengono poi filtrati e salvati.
-- **Barra di avanzamento**: Una barra di avanzamento mostra il progresso complessivo dell'elaborazione.
-- **Supporto per dati GSM**: Lo script gestisce dati GSM e li integra nei risultati finali.
-
-## Prerequisiti
-
-### Librerie necessarie
-
-Assicurati di avere installato Python e le seguenti librerie prima di eseguire lo script:
-
-- `pandas`
-- `numpy`
-- `openpyxl`
-- `tqdm`
-- `tkinter`
-
-Puoi installare tutte le dipendenze necessarie utilizzando il comando:
-
-```bash
-pip install pandas numpy openpyxl tqdm tk
+```
+EightTables_Project/
+├── main.py
+└── functions/
+    ├── EightTables_GSM.py
+    └── EightTables_GSM_5G.py
 ```
 
-### Formato del File di Input
+- **`EightTables_GSM.py`**: gestisce la conversione ed elaborazione dati GSM (2G), UMTS (3G) e LTE (4G).
+- **`EightTables_GSM_5G.py`**: estende il primo script aggiungendo il supporto alle misure 5G.
+- **`main.py`**: script principale per selezionare quale elaborazione effettuare.
 
-Il file Excel da fornire in input deve seguire un formato specifico. Ogni foglio all'interno del file deve contenere tabelle con le misurazioni da elaborare. 
+## Requisiti
+- Python 3.x
+- Librerie Python necessarie:
+  - pandas
+  - numpy
+  - openpyxl
+  - tqdm
+- tkinter (incluso in Python standard)
 
-- Ogni foglio deve essere denominato in modo da riflettere la direzione relativa delle misurazioni.
-- Lo script elaborerà i fogli partendo dall'ultimo e risalendo fino al primo, con l'eccezione del foglio denominato "Foglio1", che verrà escluso dall'elaborazione.
-- È fondamentale che i dati all'interno di ciascun foglio siano strutturati correttamente e che le colonne rispettino i nomi previsti dallo script, per garantire un'elaborazione accurata.
+## Installazione delle Dipendenze
+Utilizzare il seguente comando per installare tutte le dipendenze necessarie:
+```bash
+pip install pandas numpy openpyxl tqdm
+```
 
-Assicurati che il file di input sia configurato correttamente per evitare errori durante l'elaborazione.
+## Utilizzo
+Lanciare l'applicazione tramite il file `main.py` con:
+```bash
+python main.py
+```
+All'avvio verrà richiesto tramite interfaccia grafica di selezionare il file Excel da elaborare. Successivamente, l'utente sceglierà se elaborare dati esclusivamente GSM, UMTS e LTE oppure includere anche il 5G.
+
+Lo script produrrà automaticamente degli output Excel suddivisi per ogni direzione rilevata, salvati nella cartella `EightTables_output` posizionata nella stessa directory del file di input selezionato.
+
+## Formato Dati Input/Output
+- **Input**: file Excel con dati GSM, UMTS, LTE e/o 5G da elaborare, divisi in fogli corrispondenti alle direzioni.
+- **Output**: file Excel riepilogativi con colonne:
+  - OPERATORE BANDA
+  - CANALE
+  - PCI
+  - CAMPIONI
+  - RSRP-RSCP
+  - RSRQ-EC/NO
+  - RSSI-RXLEV
+  - SINR
+  - DIREZIONE
+  - CELL ID
+
+## Struttura del Codice
+- Mappatura canali e frequenze agli operatori corrispondenti.
+- Aggregazione dati medi per tecnologia (GSM, UMTS, LTE, 5G).
+- Calcolo valori medi di misure (RSRP, RSCP, RSSI, SINR, ecc.).
+
+## Collaborazione
+Questo progetto è stato realizzato in stretta collaborazione con l'azienda:
+
+**Selektra Italia S.r.l.**
+
+## Licenza
+Questo progetto è distribuito sotto la licenza **Apache 2.0**. Per ulteriori dettagli consultare il file [LICENSE](LICENSE).
